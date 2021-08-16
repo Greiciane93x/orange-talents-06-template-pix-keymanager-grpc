@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.ane";
+option java_outer_classname = "Pix";
+option objc_class_prefix = "HLW";
+
+package br.com.ane;
+
+service PixService {
+  rpc send (PixRequest) returns (PixReply) {}
+}
+
+message PixRequest {
+  string name = 1;
+}
+
+message PixReply {
+  string message = 1;
+}
