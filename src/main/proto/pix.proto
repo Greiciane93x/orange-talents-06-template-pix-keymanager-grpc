@@ -2,19 +2,37 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "br.com.ane";
-option java_outer_classname = "Pix";
+option java_outer_classname = "PIX";
 option objc_class_prefix = "HLW";
 
 package br.com.ane;
 
 service PixService {
-  rpc send (PixRequest) returns (PixReply) {}
+  rpc criaPix (ChavePixRequest) returns (ChavePixResponse) {}
 }
 
-message PixRequest {
-  string name = 1;
+enum TipoConta {
+  UNKNOWN_TIPO_CONTA = 0;
+  CONTA_CORRENTE = 1;
+  CONTA_POUPANCA = 2;
 }
 
-message PixReply {
-  string message = 1;
+enum TipoChave {
+  UNKNOWN_TIPO_CHAVE = 0;
+  CPF = 1;
+  CELULAR = 2;
+  EMAIL = 3;
+  ALEATORIA = 4;
+}
+
+message ChavePixRequest {
+  string clienteId = 1;
+  TipoChave tipoChave = 2;
+  string chave = 3;
+  TipoConta tipoConta = 4;
+}
+
+message ChavePixResponse{
+  string clienteId = 1;
+  string pixId = 2;
 }
