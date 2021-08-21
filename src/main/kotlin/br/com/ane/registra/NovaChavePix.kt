@@ -13,13 +13,13 @@ import javax.validation.constraints.Size
 data class NovaChavePix(
 //    @ValidUUID
     @field:NotBlank
-    val clienteId: String,
+    val clienteId: String?,
     @field:NotNull
-    val tipo: TipoChave?,
+    val tipo: TipoChave,
     @field:Size(max = 77)
-    val chave: String,
+    val chave: String?,
     @field:NotNull
-    var tipoConta: TipoConta?,
+    var tipoConta: TipoConta,
 
     ){
 

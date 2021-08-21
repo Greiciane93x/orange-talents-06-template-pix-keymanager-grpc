@@ -2,24 +2,24 @@ package br.com.ane.registra
 
 import io.micronaut.validation.Validated
 import org.slf4j.LoggerFactory
-import java.lang.IllegalStateException
 import javax.inject.Inject
 import javax.inject.Singleton
 import javax.transaction.Transactional
-import javax.validation.Valid
 
 @Validated
 @Singleton
 class NovaChavePixService(
-    @Inject val repository: ChavePixRepository,
+    @Inject val repository: ChaveRepository,
     @Inject val itauClient: ContasDeClientesNoItauClient,
 ){
     private val Logger = LoggerFactory.getLogger(this::class.java)
 
+//    @Transactional
     fun registra(novaChave: NovaChavePix): ChavePix {
 
-        // verificando se já existe chave
-        //if(repository.existsByChave(novaChave.chave)) throw ChavePixExistenteException("Chave Pix '${novaChave.chave}' existente")
+
+//         verificando se já existe chave
+//        if(repository.existsByChave(novaChave.chave)) throw ChavePixExistenteException("Chave Pix '${novaChave.chave}' existente")
 
         // busca dados na conta ERP do itau
         val response = itauClient.buscaContaPorTipo(novaChave.clienteId!!, novaChave.tipoConta!!.name)

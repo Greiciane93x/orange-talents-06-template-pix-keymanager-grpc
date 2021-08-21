@@ -1,22 +1,21 @@
 micronaut:
   application:
-    name: keyManager
-
-itau.contas.url: ${itau.contas.url:`http://localhost:9091`}
+    name: pix
 
 datasources:
   default:
-    url: jdbc:h2:mem:devDb
+    url: jdbc:h2:mem:desafiopix-test;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
     username: sa
     password: ''
-    schema-generate: CREATE_DROP
+    schema-generate: UPDATE
     dialect: H2
-
 jpa:
   default:
-    entity-scan:
-      packages: 'br.com.ane.*'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
 
-
+itau.contas.url: http://localhost:9091
 

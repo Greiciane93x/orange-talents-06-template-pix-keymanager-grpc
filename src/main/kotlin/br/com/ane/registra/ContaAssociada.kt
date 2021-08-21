@@ -4,11 +4,10 @@ import javax.persistence.Embeddable
 
 @Embeddable
 data class ContaAssociada(
-    val instituicao: String,
-    val nomeDoTitular: String,
-    val cpfDoTitular: String,
-    val agencia: String,
-    val numeroDaConta: String
-){
-}
+    var instituicao: String? = null,
+    var nomeDoTitular: String? = null,
+    var cpfDoTitular: String? = null,
+    var agencia: String? = null,
+    var numeroDaConta: String? = null
 
+)

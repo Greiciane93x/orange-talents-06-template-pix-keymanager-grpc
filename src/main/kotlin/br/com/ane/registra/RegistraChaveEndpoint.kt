@@ -1,8 +1,6 @@
 package br.com.ane.registra
 
-import br.com.ane.ChavePixRequest
-import br.com.ane.ChavePixResponse
-import br.com.ane.PixServiceGrpc
+import br.com.ane.*
 import io.grpc.stub.StreamObserver
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -10,13 +8,11 @@ import javax.inject.Singleton
 
 @Singleton
 class RegistraChaveEndpoint(@Inject private val service: NovaChavePixService,) :
-    PixServiceGrpc.PixServiceImplBase(){
+    DesafioPixServiceGrpc.DesafioPixServiceImplBase(){
 
-    override fun criaPix(
-        request: ChavePixRequest,
-        responseObserver: StreamObserver<ChavePixResponse>
-    ) {
-        // transformando em um dto
+
+    override fun registra(request: ChavePixRequest,
+                          responseObserver: StreamObserver<ChavePixResponse>) {
         val novaChave = request.toModel()
         val chaveCriada = service.registra(novaChave)
 
@@ -25,6 +21,19 @@ class RegistraChaveEndpoint(@Inject private val service: NovaChavePixService,) :
             .setPixId(chaveCriada.id.toString())
             .build())
         responseObserver.onCompleted()
+
     }
+}
+
+fun ChavePixRequest.toModel(): NovaChavePix {
+    return NovaChavePix(
+        clienteId = clienteId, tipo = when (tipoChave) {
+            TipoChave.UNKNOWN_TIPO_CHAVE -> null
+            else -> TipoChave.valueOf(tipoChave.name)
+        }!!, chave = chave, tipoConta = when (tipoConta) {
+            TipoConta.UNKNOWN_TIPO_CONTA-> null
+            else -> TipoConta.valueOf(tipoConta.name)
+        }!!
+    )
 }
 

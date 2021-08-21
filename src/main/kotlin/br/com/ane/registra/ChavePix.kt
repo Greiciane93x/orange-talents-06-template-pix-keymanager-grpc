@@ -2,6 +2,7 @@ package br.com.ane.registra
 
 import br.com.ane.TipoChave
 import br.com.ane.TipoConta
+import org.hibernate.annotations.GenericGenerator
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
@@ -39,8 +40,9 @@ data class ChavePix(
         ){
 
     @Id
-    @GeneratedValue
-    val id: UUID? = null
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    var id: UUID? = null
 
     @Column(nullable = false)
     val criadaEm: LocalDateTime = LocalDateTime.now()
