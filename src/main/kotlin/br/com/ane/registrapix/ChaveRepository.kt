@@ -6,6 +6,5 @@ import java.util.*
 
 @Repository
 interface ChaveRepository : JpaRepository<ChavePix, UUID> {
-    fun existsByChave(chave: String?) : Boolean
-
+    fun existsByChave(chave: String?): Boolean
 }

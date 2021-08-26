@@ -10,14 +10,16 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(uniqueConstraints = [UniqueConstraint(
-    name = "uk_chave_pix",
-    columnNames = ["chave"]
-)])
+@Table(
+    uniqueConstraints = [UniqueConstraint(
+        name = "uk_chave_pix",
+        columnNames = ["chave"]
+    )]
+)
 data class ChavePix(
     @field:NotNull
     @Column(nullable = false)
-    val clienteId: UUID?,
+    val clienteId: UUID,
 
     @field:NotNull
     @Enumerated(EnumType.STRING)
@@ -34,8 +36,8 @@ data class ChavePix(
     val tipoDeConta: TipoConta?,
 
 //    @Embedded
-    val conta: ContaAssociada?)
-    {
+    val conta: ContaAssociada?
+) {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -75,6 +77,4 @@ data class ChavePix(
     override fun toString(): String {
         return "ChavePix(clienteId=$clienteId, tipo=$tipo, chave=$chave, tipoDeConta=$tipoDeConta, conta=$conta, id=$id, criadaEm=$criadaEm)"
     }
-
-
-    }
+}

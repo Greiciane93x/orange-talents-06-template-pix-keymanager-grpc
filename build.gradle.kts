@@ -45,10 +45,23 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     runtimeOnly("ch.qos.logback:logback-classic")
-    runtimeOnly("com.h2database:h2")
+//    runtimeOnly("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // testes
+//    testAnnotationProcessor("io.micronaut:micronaut-inject-java")
+//    testImplementation("io.micronaut:micronaut-http-client")
+    testImplementation("org.mockito:mockito-core")
+    testImplementation("com.h2database:h2")
+//    testImplementation("io.micronaut:micronaut-http-client")
+
+    testImplementation("io.micronaut.xml:micronaut-jackson-xml")
+//    runtimeOnly("com.h2database:h2")
+//    testImplementation("org.mockito:mockito-core:3.+")
+    testImplementation("io.micronaut:micronaut-http-client")
+    testAnnotationProcessor("io.micronaut:micronaut-inject-java")
 
 }
 

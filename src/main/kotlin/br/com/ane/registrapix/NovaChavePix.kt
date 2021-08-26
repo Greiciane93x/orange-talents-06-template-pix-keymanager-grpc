@@ -23,13 +23,13 @@ data class NovaChavePix(
     val chave: String?,
     @field:NotNull
     var tipoConta: TipoConta,
-    ){
+) {
     fun toModel(conta: ContaAssociada): ChavePix {
-        return ChavePix (
+        return ChavePix(
             clienteId = UUID.fromString(this.clienteId),
-            tipo = validaTipoChave.valueOf(this.tipo!!.name),
-            chave = if(this.tipo == validaTipoChave.ALEATORIA) UUID.randomUUID().toString() else this.chave!!,
-            tipoDeConta = TipoConta.valueOf(this.tipoConta!!.name),
+            tipo = validaTipoChave.valueOf(this.tipo.name),
+            chave = if (this.tipo == validaTipoChave.ALEATORIA) UUID.randomUUID().toString() else this.chave!!,
+            tipoDeConta = TipoConta.valueOf(this.tipoConta.name),
             conta = conta
         )
     }

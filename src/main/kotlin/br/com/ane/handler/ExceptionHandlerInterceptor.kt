@@ -34,8 +34,9 @@ class ExceptionHandlerInterceptor : MethodInterceptor<BindableService, Any?>{
                 is ConstraintViolation<*> -> handleConstraintViolationException(error as ConstraintViolationException)
                 else -> Status.UNKNOWN.withDescription("error unexpected").asRuntimeException()
             }
-            val responseObserver = context!!.parameterValues[1] as StreamObserver<*>
-            responseObserver.onError(statusERROR)
+            val responseObserver = (context.parameterValues[1] as StreamObserver<*>).apply {
+                onError(statusERROR)
+            }
             return null
         }
         return false
