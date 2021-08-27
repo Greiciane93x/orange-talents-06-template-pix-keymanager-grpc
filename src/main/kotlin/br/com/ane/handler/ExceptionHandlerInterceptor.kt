@@ -1,5 +1,6 @@
 package br.com.ane.handler
 
+import br.com.ane.exceptions.ChavePixExistenteException
 import com.google.rpc.BadRequest
 import io.grpc.BindableService
 import io.grpc.Status

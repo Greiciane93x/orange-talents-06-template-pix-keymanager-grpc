@@ -1,11 +1,10 @@
 package br.com.ane.registrapix
 
-import br.com.ane.handler.ChavePixExistenteException
+import br.com.ane.exceptions.ChavePixExistenteException
 import br.com.ane.registra.ContasDeClientesNoItauClient
 import org.slf4j.LoggerFactory
 import javax.inject.Inject
 import javax.inject.Singleton
-import javax.transaction.Transactional
 
 @Singleton
 class NovaChavePixService(

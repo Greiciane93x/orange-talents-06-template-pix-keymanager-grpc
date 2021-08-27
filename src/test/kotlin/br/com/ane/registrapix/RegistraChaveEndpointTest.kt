@@ -1,7 +1,7 @@
 package br.com.ane.registrapix
 
-import br.com.ane.ChavePixRequest
-import br.com.ane.DesafioPixServiceGrpc
+import br.com.ane.DesafioRegistraPixServiceGrpc
+import br.com.ane.RegistraChavePixRequest
 import br.com.ane.TipoChave
 import br.com.ane.TipoConta
 import br.com.ane.registra.ContasDeClientesNoItauClient
@@ -30,7 +30,7 @@ import java.util.*
 @MicronautTest(transactional = false)
 internal class RegistraChaveEndpointTest(
     val repository: ChaveRepository,
-    val grpcClient: DesafioPixServiceGrpc.DesafioPixServiceBlockingStub,
+    val grpcClient: DesafioRegistraPixServiceGrpc.DesafioRegistraPixServiceBlockingStub,
     val itauClient: ContasDeClientesNoItauClient
 ) {
     companion object {
@@ -79,7 +79,7 @@ internal class RegistraChaveEndpointTest(
 
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.registra(
-                ChavePixRequest.newBuilder()
+                RegistraChavePixRequest.newBuilder()
                     .setClienteId(Client_ID.toString())
                     .setTipoChave(TipoChave.EMAIL)
                     .setChave("ane@teste.com")
@@ -101,13 +101,10 @@ internal class RegistraChaveEndpointTest(
     @Factory
     class Clients {
         @Bean
-        fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel): DesafioPixServiceGrpc.DesafioPixServiceBlockingStub {
-            return DesafioPixServiceGrpc.newBlockingStub(channel)
+        fun blockingStub(@GrpcChannel(GrpcServerChannel.NAME) channel: ManagedChannel): DesafioRegistraPixServiceGrpc.DesafioRegistraPixServiceBlockingStub {
+            return DesafioRegistraPixServiceGrpc.newBlockingStub(channel)
         }
     }
-
-
-
     private fun dadosDaContaResponse(): DadosDaContaResponse {
         return DadosDaContaResponse(
             tipo = "CONTA_CORRENTE",

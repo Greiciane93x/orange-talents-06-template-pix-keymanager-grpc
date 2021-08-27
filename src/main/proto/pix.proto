@@ -7,8 +7,12 @@ option objc_class_prefix = "HLW";
 
 package br.com.ane;
 
-service DesafioPixService {
-  rpc registra (ChavePixRequest) returns (ChavePixResponse) {}
+service DesafioRegistraPixService {
+  rpc registra (RegistraChavePixRequest) returns (RegistraChavePixResponse) {}
+}
+
+service DesafioDeletaPixService{
+  rpc deleta (DeletaChavePixRequest) returns (DeletaChavePixResponse) {}
 }
 
 enum TipoConta {
@@ -25,14 +29,24 @@ enum TipoChave {
   ALEATORIA = 4;
 }
 
-message ChavePixRequest {
+message RegistraChavePixRequest {
   string clienteId = 1;
   TipoChave tipoChave = 2;
   string chave = 3;
   TipoConta tipoConta = 4;
 }
 
-message ChavePixResponse{
+message RegistraChavePixResponse{
+  string clienteId = 1;
+  string pixId = 2;
+}
+
+message DeletaChavePixRequest{
+  string clienteId = 1;
+  string pixId = 2;
+}
+
+message DeletaChavePixResponse{
   string clienteId = 1;
   string pixId = 2;
 }
