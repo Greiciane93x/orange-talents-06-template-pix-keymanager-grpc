@@ -4,10 +4,10 @@ import br.com.ane.DesafioRegistraPixServiceGrpc
 import br.com.ane.RegistraChavePixRequest
 import br.com.ane.TipoChave
 import br.com.ane.TipoConta
-import br.com.ane.registra.ContasDeClientesNoItauClient
-import br.com.ane.registra.DadosDaContaResponse
-import br.com.ane.registra.InstituicaoResponse
-import br.com.ane.registra.TitularResponse
+import br.com.ane.client.ContasDeClientesNoItauClient
+import br.com.ane.client.DadosDaContaResponse
+import br.com.ane.client.InstituicaoResponse
+import br.com.ane.client.TitularResponse
 import io.grpc.ManagedChannel
 import io.grpc.Status
 import io.grpc.StatusRuntimeException

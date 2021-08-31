@@ -29,7 +29,6 @@ class NovaChavePixService(
         repository.save(chave)
 
 
-
         val bcbRequest = CriaChavePixRequest.of(chave).also {
             Logger.info("Registrando chave Pix no Banco Central do Brasil (BCB): $it")
         }
