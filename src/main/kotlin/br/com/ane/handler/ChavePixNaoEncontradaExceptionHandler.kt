@@ -13,10 +13,7 @@ class ChavePixNaoEncontradaExceptionHandler : ExceptionHandler<ChavePixNaoEncont
                 .withDescription(e.message)
                 .withCause(e))
     }
-
     override fun supports(e: Exception): Boolean {
         return e is ChavePixNaoEncontradaException
     }
-
-
 }

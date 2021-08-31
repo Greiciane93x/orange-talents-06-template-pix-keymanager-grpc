@@ -31,5 +31,6 @@ class DeletaPixEndpoint(@Inject private val service: DeletaChaveService,):
             .setPixId(request.pixId)
             .build())
         responseObserver.onCompleted()
+
     }
 }

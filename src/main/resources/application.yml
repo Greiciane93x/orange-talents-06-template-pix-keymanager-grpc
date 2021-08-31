@@ -18,4 +18,4 @@ jpa:
           auto: update
 
 itau.contas.url: http://localhost:9091
-
+integracao.bcb.contas: http://localhost:8082
